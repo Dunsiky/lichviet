@@ -3,102 +3,709 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lịch Âm Dương Việt Nam 2025</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <meta name="description" content="Lịch âm dương Việt Nam với các ngày lễ truyền thống và hiện đại">
+    <title>Lịch Âm Việt Nam - 4K Sống Động</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-20px) translateY(-10px); }
+            50% { transform: translateX(20px) translateY(10px); }
+            75% { transform: translateX(-10px) translateY(20px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+            50% { text-shadow: 0 4px 30px rgba(255, 255, 255, 0.5); }
+        }
+
+        .title i {
+            color: #ffd700;
+            margin-right: 15px;
+            animation: moonRotate 10s linear infinite;
+        }
+
+        @keyframes moonRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .date-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .solar-date, .lunar-date {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 15px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .calendar-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .month-year {
+            font-size: 2rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .calendar-grid {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .weekday {
+            text-align: center;
+            font-weight: 600;
+            color: #ffd700;
+            padding: 10px;
+            font-size: 1.1rem;
+        }
+
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .day {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .day:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .day.today {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            font-weight: 700;
+            animation: todayPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes todayPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
+        }
+
+        .day.other-month {
+            opacity: 0.3;
+        }
+
+        .solar-day {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 2px;
+        }
+
+        .lunar-day {
+            font-size: 0.8rem;
+            color: #ffd700;
+            font-weight: 500;
+        }
+
+        .info-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .today-info h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .info-item i {
+            margin-right: 15px;
+            color: #ffd700;
+            width: 20px;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        .star1 {
+            width: 4px;
+            height: 4px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .star2 {
+            width: 6px;
+            height: 6px;
+            top: 40%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .star3 {
+            width: 3px;
+            height: 3px;
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .moon-phase {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 60px;
+            height: 60px;
+            background: #ffd700;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: moonFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes moonFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .date-info {
+                flex-direction: column;
+            }
+
+            .calendar-container {
+                padding: 20px;
+            }
+
+            .month-year {
+                font-size: 1.5rem;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .day {
+                min-height: 60px;
+            }
+
+            .solar-day {
+                font-size: 1rem;
+            }
+
+            .lunar-day {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <div class="header-content">
-                <h1 class="title">🌙 Lịch Âm Dương Việt Nam</h1>
-                <p class="subtitle">Tra cứu lịch âm, dương và các ngày lễ quan trọng</p>
-            </div>
-            
-            <div class="nav-controls">
-                <button id="prevMonth" class="nav-btn" title="Tháng trước">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="15,18 9,12 15,6"></polyline>
-                    </svg>
-                </button>
-                <h2 id="currentMonth" class="current-month"></h2>
-                <button id="nextMonth" class="nav-btn" title="Tháng sau">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9,18 15,12 9,6"></polyline>
-                    </svg>
-                </button>
+            <h1 class="title">
+                <i class="fas fa-moon"></i>
+                Lịch Âm Việt Nam
+            </h1>
+            <div class="date-info">
+                <div class="solar-date" id="solarDate"></div>
+                <div class="lunar-date" id="lunarDate"></div>
             </div>
         </header>
 
-        <main class="main-content">
-            <div class="calendar-section">
-                <div class="calendar-container">
-                    <div class="weekdays">
-                        <div class="weekday sunday">CN</div>
-                        <div class="weekday">T2</div>
-                        <div class="weekday">T3</div>
-                        <div class="weekday">T4</div>
-                        <div class="weekday">T5</div>
-                        <div class="weekday">T6</div>
-                        <div class="weekday saturday">T7</div>
-                    </div>
-                    <div id="calendar" class="calendar-grid"></div>
-                </div>
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button class="nav-btn" id="prevMonth">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2 class="month-year" id="monthYear"></h2>
+                <button class="nav-btn" id="nextMonth">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
 
-            <div class="sidebar">
-                <div class="info-card today-card">
-                    <div class="card-header">
-                        <h3>📅 Hôm nay</h3>
-                    </div>
-                    <div class="card-content">
-                        <div id="todayDate" class="today-solar"></div>
-                        <div id="todayLunar" class="today-lunar"></div>
-                        <div id="todayHoliday" class="today-holiday"></div>
-                    </div>
+            <div class="calendar-grid">
+                <div class="weekdays">
+                    <div class="weekday">CN</div>
+                    <div class="weekday">T2</div>
+                    <div class="weekday">T3</div>
+                    <div class="weekday">T4</div>
+                    <div class="weekday">T5</div>
+                    <div class="weekday">T6</div>
+                    <div class="weekday">T7</div>
                 </div>
+                <div class="days" id="calendarDays"></div>
+            </div>
+        </div>
 
-                <div class="info-card holidays-card">
-                    <div class="card-header">
-                        <h3>🎉 Ngày lễ tháng này</h3>
-                    </div>
-                    <div class="card-content">
-                        <div id="monthlyHolidays" class="holidays-list"></div>
-                    </div>
+        <div class="info-panel">
+            <div class="today-info">
+                <h3>Hôm nay</h3>
+                <div class="info-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span id="todayLunar"></span>
                 </div>
-
-                <div class="info-card legend-card">
-                    <div class="card-header">
-                        <h3>📖 Chú thích</h3>
-                    </div>
-                    <div class="card-content">
-                        <div class="legend-item">
-                            <span class="legend-color today-color"></span>
-                            <span>Hôm nay</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-color holiday-color"></span>
-                            <span>Ngày lễ</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-color weekend-color"></span>
-                            <span>Cuối tuần</span>
-                        </div>
-                    </div>
+                <div class="info-item">
+                    <i class="fas fa-star"></i>
+                    <span id="zodiac"></span>
                 </div>
             </div>
-        </main>
-
-        <footer class="footer">
-            <p>&copy; 2025 Lịch Âm Dương Việt Nam. Made with ❤️ for Vietnamese culture.</p>
-        </footer>
+        </div>
     </div>
 
-    <script src="js/lunar.js"></script>
-    <script src="js/holidays.js"></script>
-    <script src="js/main.js"></script>
+    <div class="floating-elements">
+        <div class="star star1"></div>
+        <div class="star star2"></div>
+        <div class="star star3"></div>
+        <div class="moon-phase" id="moonPhase"></div>
+    </div>
+
+    <script>
+        // Lunar Calendar Conversion Functions
+        const PI = Math.PI;
+        
+        function jdFromDate(dd, mm, yy) {
+            const a = Math.floor((14 - mm) / 12);
+            const y = yy - a;
+            const m = mm + 12 * a - 3;
+            const jd = dd + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+            if (jd < 2299161) {
+                return dd + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - 32083;
+            }
+            return jd;
+        }
+
+        function jdToDate(jd) {
+            let a, b, c;
+            if (jd > 2299160) {
+                a = jd + 32044;
+                b = Math.floor((4 * a + 3) / 146097);
+                c = a - Math.floor((b * 146097) / 4);
+            } else {
+                b = 0;
+                c = jd + 32082;
+            }
+            const d = Math.floor((4 * c + 3) / 1461);
+            const e = c - Math.floor((1461 * d) / 4);
+            const m = Math.floor((5 * e + 2) / 153);
+            const day = e - Math.floor((153 * m + 2) / 5) + 1;
+            const month = m + 3 - 12 * Math.floor(m / 10);
+            const year = b * 100 + d - 4800 + Math.floor(m / 10);
+            return [day, month, year];
+        }
+
+        function newMoon(k) {
+            const T = k / 1236.85;
+            const T2 = T * T;
+            const T3 = T2 * T;
+            const dr = PI / 180;
+            let Jd1 = 2415020.75933 + 29.53058868 * k + 0.0001178 * T2 - 0.000000155 * T3;
+            Jd1 = Jd1 + 0.00033 * Math.sin((166.56 + 132.87 * T - 0.009173 * T2) * dr);
+            const M = 359.2242 + 29.10535608 * k - 0.0000333 * T2 - 0.00000347 * T3;
+            const Mpr = 306.0253 + 385.81691806 * k + 0.0107306 * T2 + 0.00001236 * T3;
+            const F = 21.2964 + 390.67050646 * k - 0.0016528 * T2 - 0.00000239 * T3;
+            let C1 = (0.1734 - 0.000393 * T) * Math.sin(M * dr) + 0.0021 * Math.sin(2 * dr * M);
+            C1 = C1 - 0.4068 * Math.sin(Mpr * dr) + 0.0161 * Math.sin(dr * 2 * Mpr);
+            C1 = C1 - 0.0004 * Math.sin(dr * 3 * Mpr) + 0.0104 * Math.sin(dr * 2 * F);
+            C1 = C1 - 0.0051 * Math.sin(dr * (M + Mpr)) - 0.0074 * Math.sin(dr * (M - Mpr));
+            C1 = C1 + 0.0004 * Math.sin(dr * (2 * F + M)) - 0.0004 * Math.sin(dr * (2 * F - M));
+            C1 = C1 - 0.0006 * Math.sin(dr * (2 * F + Mpr)) + 0.0010 * Math.sin(dr * (2 * F - Mpr));
+            C1 = C1 + 0.0005 * Math.sin(dr * (2 * Mpr + M));
+            let deltat;
+            if (T < -11) {
+                deltat = 0.001 + 0.000839 * T + 0.0002261 * T2 - 0.00000845 * T3 - 0.000000081 * T * T3;
+            } else {
+                deltat = -0.000278 + 0.000265 * T + 0.000262 * T2;
+            }
+            const JdNew = Jd1 + C1 - deltat;
+            return JdNew;
+        }
+
+        function sunLongitude(jdn) {
+            const T = (jdn - 2451545.0) / 36525;
+            const T2 = T * T;
+            const dr = PI / 180;
+            const M = 357.52910 + 35999.05030 * T - 0.0001559 * T2 - 0.00000048 * T * T2;
+            const L0 = 280.46645 + 36000.76983 * T + 0.0003032 * T2;
+            let DL = (1.914600 - 0.004817 * T - 0.000014 * T2) * Math.sin(dr * M);
+            DL = DL + (0.019993 - 0.000101 * T) * Math.sin(dr * 2 * M) + 0.000290 * Math.sin(dr * 3 * M);
+            let L = L0 + DL;
+            L = L * dr;
+            L = L - PI * 2 * (Math.floor(L / (PI * 2)));
+            return L;
+        }
+
+        function getSunLongitude(dayNumber, timeZone) {
+            return Math.floor(sunLongitude(dayNumber - 0.5 - timeZone / 24) / PI * 6);
+        }
+
+        function getNewMoonDay(k, timeZone) {
+            return Math.floor(newMoon(k) + 0.5 + timeZone / 24);
+        }
+
+        function getLunarMonth11(yy, timeZone) {
+            const off = jdFromDate(31, 12, yy) - 2415021;
+            const k = Math.floor(off / 29.530588853);
+            let nm = getNewMoonDay(k, timeZone);
+            const sunLong = getSunLongitude(nm, timeZone);
+            if (sunLong >= 9) {
+                nm = getNewMoonDay(k - 1, timeZone);
+            }
+            return nm;
+        }
+
+        function getLeapMonthOffset(a11, timeZone) {
+            const k = Math.floor((a11 - 2415021.076998695) / 29.530588853 + 0.5);
+            let last = 0;
+            let i = 1;
+            let arc = getSunLongitude(getNewMoonDay(k + i, timeZone), timeZone);
+            do {
+                last = arc;
+                i++;
+                arc = getSunLongitude(getNewMoonDay(k + i, timeZone), timeZone);
+            } while (arc != last && i < 14);
+            return i - 1;
+        }
+
+        function convertSolar2Lunar(dd, mm, yy, timeZone) {
+            const dayNumber = jdFromDate(dd, mm, yy);
+            const k = Math.floor((dayNumber - 2415021.076998695) / 29.530588853);
+            let monthStart = getNewMoonDay(k + 1, timeZone);
+            if (monthStart > dayNumber) {
+                monthStart = getNewMoonDay(k, timeZone);
+            }
+            let a11 = getLunarMonth11(yy, timeZone);
+            let b11 = a11;
+            let lunarYear;
+            if (a11 >= monthStart) {
+                lunarYear = yy;
+                a11 = getLunarMonth11(yy - 1, timeZone);
+            } else {
+                lunarYear = yy + 1;
+                b11 = getLunarMonth11(yy + 1, timeZone);
+            }
+            const lunarDay = dayNumber - monthStart + 1;
+            const diff = Math.floor((monthStart - a11) / 29);
+            let lunarLeap = 0;
+            let lunarMonth = diff + 11;
+            if (b11 - a11 > 365) {
+                const leapMonthDiff = getLeapMonthOffset(a11, timeZone);
+                if (diff >= leapMonthDiff) {
+                    lunarMonth = diff + 10;
+                    if (diff == leapMonthDiff) {
+                        lunarLeap = 1;
+                    }
+                }
+            }
+            if (lunarMonth > 12) {
+                lunarMonth = lunarMonth - 12;
+            }
+            if (lunarMonth >= 11 && diff < 4) {
+                lunarYear -= 1;
+            }
+            return [lunarDay, lunarMonth, lunarYear, lunarLeap];
+        }
+
+        // Calendar Application
+        class LunarCalendar {
+            constructor() {
+                this.currentDate = new Date();
+                this.currentMonth = this.currentDate.getMonth();
+                this.currentYear = this.currentDate.getFullYear();
+                this.today = new Date();
+                
+                this.monthNames = [
+                    'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6',
+                    'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'
+                ];
+                
+                this.lunarMonthNames = [
+                    'Giêng', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu',
+                    'Bảy', 'Tám', 'Chín', 'Mười', 'Mười một', 'Chạp'
+                ];
+                
+                this.zodiacAnimals = [
+                    'Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ',
+                    'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'
+                ];
+                
+                this.init();
+            }
+            
+            init() {
+                this.updateHeader();
+                this.renderCalendar();
+                this.updateTodayInfo();
+                this.bindEvents();
+            }
+            
+            bindEvents() {
+                document.getElementById('prevMonth').addEventListener('click', () => {
+                    this.currentMonth--;
+                    if (this.currentMonth < 0) {
+                        this.currentMonth = 11;
+                        this.currentYear--;
+                    }
+                    this.updateHeader();
+                    this.renderCalendar();
+                });
+                
+                document.getElementById('nextMonth').addEventListener('click', () => {
+                    this.currentMonth++;
+                    if (this.currentMonth > 11) {
+                        this.currentMonth = 0;
+                        this.currentYear++;
+                    }
+                    this.updateHeader();
+                    this.renderCalendar();
+                });
+            }
+            
+            updateHeader() {
+                const monthYear = document.getElementById('monthYear');
+                monthYear.textContent = `${this.monthNames[this.currentMonth]} ${this.currentYear}`;
+                
+                const solarDate = document.getElementById('solarDate');
+                const lunarDate = document.getElementById('lunarDate');
+                
+                const todayLunar = convertSolar2Lunar(
+                    this.today.getDate(),
+                    this.today.getMonth() + 1,
+                    this.today.getFullYear(),
+                    7
+                );
+                
+                solarDate.innerHTML = `<strong>Dương lịch:</strong> ${this.today.getDate()}/${this.today.getMonth() + 1}/${this.today.getFullYear()}`;
+                lunarDate.innerHTML = `<strong>Âm lịch:</strong> ${todayLunar[0]}/${todayLunar[1]}/${todayLunar[2]}`;
+            }
+            
+            renderCalendar() {
+                const calendarDays = document.getElementById('calendarDays');
+                calendarDays.innerHTML = '';
+                
+                const firstDay = new Date(this.currentYear, this.currentMonth, 1);
+                const lastDay = new Date(this.currentYear, this.currentMonth + 1, 0);
+                const startDate = new Date(firstDay);
+                startDate.setDate(startDate.getDate() - firstDay.getDay());
+                
+                for (let i = 0; i < 42; i++) {
+                    const cellDate = new Date(startDate);
+                    cellDate.setDate(startDate.getDate() + i);
+                    
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'day';
+                    
+                    const isCurrentMonth = cellDate.getMonth() === this.currentMonth;
+                    const isToday = cellDate.toDateString() === this.today.toDateString();
+                    
+                    if (!isCurrentMonth) {
+                        dayElement.classList.add('other-month');
+                    }
+                    
+                    if (isToday) {
+                        dayElement.classList.add('today');
+                    }
+                    
+                    const lunarInfo = convertSolar2Lunar(
+                        cellDate.getDate(),
+                        cellDate.getMonth() + 1,
+                        cellDate.getFullYear(),
+                        7
+                    );
+                    
+                    dayElement.innerHTML = `
+                        <div class="solar-day">${cellDate.getDate()}</div>
+                        <div class="lunar-day">${lunarInfo[0]}/${lunarInfo[1]}</div>
+                    `;
+                    
+                    calendarDays.appendChild(dayElement);
+                }
+            }
+            
+            updateTodayInfo() {
+                const todayLunar = convertSolar2Lunar(
+                    this.today.getDate(),
+                    this.today.getMonth() + 1,
+                    this.today.getFullYear(),
+                    7
+                );
+                
+                const todayLunarElement = document.getElementById('todayLunar');
+                const zodiacElement = document.getElementById('zodiac');
+                
+                const lunarMonthName = this.lunarMonthNames[todayLunar[1] - 1];
+                todayLunarElement.textContent = `${todayLunar[0]} ${lunarMonthName} ${todayLunar[2]}`;
+                
+                const zodiacIndex = (todayLunar[2] - 4) % 12;
+                const zodiacAnimal = this.zodiacAnimals[zodiacIndex];
+                zodiacElement.textContent = `Năm ${zodiacAnimal}`;
+            }
+        }
+        
+        // Initialize the calendar when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            new LunarCalendar();
+        });
+    </script>
 </body>
 </html>
