@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch Âm Dương Việt Nam 2025</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Lịch âm dương Việt Nam với các ngày lễ truyền thống và hiện đại">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">🌙 Lịch Âm Dương Việt Nam</h1>
+                <p class="subtitle">Tra cứu lịch âm, dương và các ngày lễ quan trọng</p>
+            </div>
+            
+            <div class="nav-controls">
+                <button id="prevMonth" class="nav-btn" title="Tháng trước">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15,18 9,12 15,6"></polyline>
+                    </svg>
+                </button>
+                <h2 id="currentMonth" class="current-month"></h2>
+                <button id="nextMonth" class="nav-btn" title="Tháng sau">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="calendar-section">
+                <div class="calendar-container">
+                    <div class="weekdays">
+                        <div class="weekday sunday">CN</div>
+                        <div class="weekday">T2</div>
+                        <div class="weekday">T3</div>
+                        <div class="weekday">T4</div>
+                        <div class="weekday">T5</div>
+                        <div class="weekday">T6</div>
+                        <div class="weekday saturday">T7</div>
+                    </div>
+                    <div id="calendar" class="calendar-grid"></div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="info-card today-card">
+                    <div class="card-header">
+                        <h3>📅 Hôm nay</h3>
+                    </div>
+                    <div class="card-content">
+                        <div id="todayDate" class="today-solar"></div>
+                        <div id="todayLunar" class="today-lunar"></div>
+                        <div id="todayHoliday" class="today-holiday"></div>
+                    </div>
+                </div>
+
+                <div class="info-card holidays-card">
+                    <div class="card-header">
+                        <h3>🎉 Ngày lễ tháng này</h3>
+                    </div>
+                    <div class="card-content">
+                        <div id="monthlyHolidays" class="holidays-list"></div>
+                    </div>
+                </div>
+
+                <div class="info-card legend-card">
+                    <div class="card-header">
+                        <h3>📖 Chú thích</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="legend-item">
+                            <span class="legend-color today-color"></span>
+                            <span>Hôm nay</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color holiday-color"></span>
+                            <span>Ngày lễ</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color weekend-color"></span>
+                            <span>Cuối tuần</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Lịch Âm Dương Việt Nam. Made with ❤️ for Vietnamese culture.</p>
+        </footer>
+    </div>
+
+    <script src="js/lunar.js"></script>
+    <script src="js/holidays.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
